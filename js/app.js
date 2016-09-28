@@ -1,7 +1,13 @@
 var app = angular.module('cats', []);
 
-app.controller('catsClicks', function($scope) {
-    $scope.cats = cats;
+app.controller('catsClicks', ['$scope', '$http', catsClicks]);
+
+function catsClicks($scope, $http) {
+
+    $http.get('data/cats.json').then(function(response) {
+        $scope.cats = response.data;
+    });
+
     $scope.catSelectedIndex = 0;
     $scope.catSelected = $scope.cats[0];
     $scope.admin = false;
@@ -33,7 +39,7 @@ app.controller('catsClicks', function($scope) {
     $scope.adminCancel = function adminCancel() {
         $scope.admin = false;
     };
-});
+};
 
 var cats = [{
     name: 'cat 1',
