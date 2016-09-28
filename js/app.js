@@ -5,7 +5,7 @@ app.controller('catsClicks', ['$scope', '$http', catsClicks]);
 function catsClicks($scope, $http) {
   $scope.admin = false;
   var vm = $scope;
-    $http.get('data/cats.json').then(function(response) {
+    $http.get('https://baraalex.github.io/catClicker/data/cats.json').then(function(response) {
       console.log("get");
       console.log(response.data);
         vm.cats = response.data;
