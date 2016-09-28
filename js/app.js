@@ -4,6 +4,7 @@ app.controller('catsClicks', function($scope) {
     $scope.cats = cats;
     $scope.catSelectedIndex = 0;
     $scope.catSelected = $scope.cats[0];
+    $scope.admin = false;
 
     $scope.setCat = function setCat(index) {
         $scope.catSelectedIndex = index;
@@ -12,6 +13,25 @@ app.controller('catsClicks', function($scope) {
 
     $scope.catClick = function catClick() {
         $scope.catSelected.clicks++;
+    };
+
+    $scope.adminClick = function adminClick() {
+        $scope.admin = true;
+        $scope.newName = $scope.catSelected.name;
+        $scope.newPicture = $scope.catSelected.picture;
+        $scope.newClicks = $scope.catSelected.clicks;
+    };
+
+    $scope.adminSubmit = function adminSubmit() {
+        $scope.catSelected.name = $scope.newName;
+        $scope.catSelected.picture = $scope.newPicture;
+        $scope.catSelected.clicks = $scope.newClicks;
+        $scope.admin = false;
+
+    };
+
+    $scope.adminCancel = function adminCancel() {
+        $scope.admin = false;
     };
 });
 
