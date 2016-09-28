@@ -4,8 +4,10 @@ app.controller('catsClicks', ['$scope', '$http', catsClicks]);
 
 function catsClicks($scope, $http) {
   $scope.admin = false;
-  var vm = $scope
+  var vm = $scope;
     $http.get('data/cats.json').then(function(response) {
+      console.log("get");
+      console.log(response.data);
         vm.cats = response.data;
         vm.catSelectedIndex = 0;
         vm.catSelected = vm.cats[0];
