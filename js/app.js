@@ -3,14 +3,24 @@ var app = angular.module('cats', []);
 app.controller('catsClicks', ['$scope', '$http', catsClicks]);
 
 function catsClicks($scope, $http) {
-  $scope.admin = false;
-  var vm = $scope;
-    $http.get('https://baraalex.github.io/catClicker/data/cats.json').then(function(response) {
-      console.log("get");
-      console.log(response.data);
+    $scope.admin = false;
+    var vm = $scope;
+
+    $http({
+        method: 'GET',
+        url: 'data/cats.json'
+    }).then(function successCallback(response) {
+        console.log('ok');
+        // this callback will be called asynchronously
+        // when the response is available
+
         vm.cats = response.data;
         vm.catSelectedIndex = 0;
         vm.catSelected = vm.cats[0];
+    }, function errorCallback(response) {
+        console.log('error');
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
     });
 
 
