@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Cat Clicker</title>
+</head>
+
+<body ng-app="cats">
+    <div ng-controller="catsClicks">
+        <aside class="">
+            <ul>
+                <li ng-repeat="cat in cats">
+                    <a href="#" ng-click="setCat($index)">
+            {{cat.name}}
+          </a>
+                </li>
+            </ul>
+        </aside>
+        <main>
+            <section>
+                <article>
+                    <div>
+                        <span>{{catSelected.name}}</span>
+                        <span>{{catSelected.clicks}}</span>
+                    </div>
+                    <img ng-src="{{catSelected.picture}}" alt="" id="catImg1" ng-click="catClick()" />
+                </article>
+            </section>
+        </main>
+    </div>
+
+
     <script src="dependencies/jquery-3.1.1.min.js" charset="utf-8"></script>
-    <script src="js/app.js" type="text/javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+</body>
 
-    </script>
-  </head>
-  <body>
-
-    <section>
-      <article id="cat1">
-        <div>
-          <span>Cat 1</span>
-          <span id="clicks1"></span>
-        </div>
-        <img src="https://pixabay.com/static/uploads/photo/2014/03/29/09/17/cat-300572_960_720.jpg" alt="" id="catImg1" />
-      </article>
-      <article id="cat2">
-        <div>
-          <span>Cat 2</span>
-          <span id="clicks2"></span>
-        </div>
-
-        <img src="https://s2.graphiq.com/sites/default/files/stories/t2/tiny_cat_12573_8950.jpg" alt="" id="catImg2" />
-      </article>
-    </section>
-  </body>
 </html>
