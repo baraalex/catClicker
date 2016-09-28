@@ -3,14 +3,14 @@ var app = angular.module('cats', []);
 app.controller('catsClicks', ['$scope', '$http', catsClicks]);
 
 function catsClicks($scope, $http) {
-
+  $scope.admin = false;
+  var vm = $scope
     $http.get('data/cats.json').then(function(response) {
-        $scope.cats = response.data;
+        vm.cats = response.data;
+        vm.catSelectedIndex = 0;
+        vm.catSelected = vm.cats[0];
     });
 
-    $scope.catSelectedIndex = 0;
-    $scope.catSelected = $scope.cats[0];
-    $scope.admin = false;
 
     $scope.setCat = function setCat(index) {
         $scope.catSelectedIndex = index;
